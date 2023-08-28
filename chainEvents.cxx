@@ -20,7 +20,7 @@ void ProteinChain::setupEvents(){
 	for (int i=0;i<numAtoms;i++){
 		double dt = timeNow - localTime[i];
 		pos[i] += vel[i]*dt;
-        R += pos[i];
+	        R += pos[i];
 		localTime[i] = timeNow;
 		interactionNumber[i] = 0; // NEW
 	}
