@@ -48,9 +48,9 @@ class HybridQueue
 
         std::vector<std::shared_ptr<Event>> eventPool; // container for pool of event pointers to use
 
-        std::priority_queue<std::shared_ptr<Event>, std::vector<std::shared_ptr<Event>>, compareEvents> hQ;
+        std::priority_queue<std::shared_ptr<Event>, std::vector<std::shared_ptr<Event>>, compareEvents> hQ; // name of actual ordered queue
 
-        std::shared_ptr<Event> drawFromPool();
+        std::shared_ptr<Event> drawFromPool(); // Not needed if no pool (dynamic allocation of events)
 
     public:
         HybridQueue(double scale = 500);
@@ -61,7 +61,7 @@ class HybridQueue
         
         void resetEvent(std::shared_ptr<Event> ev);
         void reset();
-        void processOverflow();
+        void processOverflow(); // checks to see if distant events are still valid, and feeds into linear list
         void drawQueue(); // draws next event ptr and places in currentEvent
         void drawQueue(Event& ev, std::vector<int>& interactionNumber);
         void replenishQueue();
